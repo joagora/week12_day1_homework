@@ -21,7 +21,7 @@ PrimeChecker.prototype.checkIfPrime = function(number) {
 PrimeChecker.prototype.bindEvents = function() {
   PubSub.subscribe('FormView:number-submitted', (event) => {
     const inputNumber = event.detail;
-    const result = this.checkIfPrime(inputNumber);
+    const result = {number: inputNumber, evaluation: this.checkIfPrime(inputNumber)};
     PubSub.publish('PrimeChecker:result-evaluated', result);
   })
 }
